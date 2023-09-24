@@ -1,0 +1,21 @@
+﻿.Cuerpo {
+	position: relative;
+	margin-left: 2px;
+	top: 0;
+	left: 201px;
+	width: 800px;
+	height: 600px;
+	background-color: lightgrey;
+	opacity: 0.4;
+
+}
+
+.prueba {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: arial;
+	background-image: url('fondo.jpg');
+	background-size: auto;
+	background-position: top;
+}
