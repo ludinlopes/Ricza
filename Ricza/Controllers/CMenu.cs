@@ -13,6 +13,13 @@ namespace Ricza.Controllers
         {
             return View();
         }
-
+        public IActionResult Pedido()
+        {
+            return View();
+        }
+        public IActionResult SN()
+        {
+            return View();
+        }
     }
 }
