@@ -17,7 +17,15 @@ namespace Ricza.Controllers
         {
             return View();
         }
+        public IActionResult Factura()
+        {
+            return View();
+        }
         public IActionResult SN()
+        {
+            return View();
+        }
+        public IActionResult Articulo()
         {
             return View();
         }

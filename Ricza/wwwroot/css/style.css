@@ -176,17 +176,18 @@ body {
 
 /*/////////////////////////////////////////////////////////////*/
 /******************  VENTANAS  *************************************/
-.movable {
-    position: absolute;
+/*.movable {
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
+    width: 80px;
+    height: 80px;
     background-color: lightblue;
     cursor: move;
     display: none;
     cursor: default;
+    background-color:blue;
 }
 
 #closeButton {
@@ -203,7 +204,7 @@ body {
 
 
 .window {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -230,7 +231,7 @@ body {
 }
 
 .window-close {
-  position: absolute;
+  position: relative;
   top: 5px;
   right: 5px;
   border: none;
@@ -247,10 +248,10 @@ body {
 .window-encabezado {
   background-color: #4e4d4d;
   height: 200px;
-}
+}*/
 
 /***********************/
-#spinner {
+/*#spinner {
   border: 10px solid #f3f3f3;
   border-top: 10px solid #3498db;
   border-radius: 50%;
@@ -270,11 +271,11 @@ body {
   100% {
     transform: rotate(360deg);
   }
-}
+}*/
 
 
 /****************************************  CONTRASEÑA **************************************************/
-.datos1 {
+/*.datos1 {
   position: fixed;
   left: 0;
   height: 35%;
@@ -332,14 +333,14 @@ body {
 
 
 .detalle tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2;*/
   /* Color de fondo para las filas pares */
-}
+/*}
 
 .detalle tr:nth-child(odd) {
-  background-color: #ffffff;
-  /* Color de fondo para las filas impares */
-}
+  background-color: #ffffff;*/
+   /*Color de fondo para las filas impares */
+/*}
 
 .detalle th {
 
@@ -357,7 +358,7 @@ body {
   height: 20px;
   font-size: 10pt;
   display: inline-block;
-  /*border-bottom: 1px solid rgb(133, 132, 132);*/
+  border-bottom: 1px solid rgb(133, 132, 132);
   padding: 4px;
   display: inline-block;
 }
@@ -430,7 +431,7 @@ body {
 }
 
 .piedoc {
-  /*background-color: red;*/
+  background-color: red;
   position: fixed;
   left: 5%;
   bottom: 3%;
@@ -442,4 +443,4 @@ body {
 .guardar,
 .buscar {
   display: none;
-}
+}*/
