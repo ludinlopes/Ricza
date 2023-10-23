@@ -1,0 +1,71 @@
+﻿@model MSocioNegocios
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link href="~/css/sn.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="contenido">
+        <form class=factura-form action=@Url.Action("GetSn","SN") method="post">
+            <header>
+                <h1>Datos Maestros Socio de Negocios</h1>
+                <div class="en1">
+                    <label for="">Código</label>
+                    <input type="text"  name="Codigo" value=@Model.CardCode>
+                    <label for="">Tipo</label>
+                    <input type="text" value=@Model.CardType>
+                    <label for="">Nombre</label>
+                    <input type="text" value="@Model.CardName">
+                    
+                    <label for="">Dirección</label>
+                    <input type="text" value=@Model.Address>
+                </div>
+                <div class="en2">
+                    <label for="">Nit</label>
+                    <input type="text" value=@Model.U_NIT>
+                    <label for="">Telefono</label>
+                    <input type="text" value=@Model.Phone1>
+                    <label for="">Correo</label>
+                    <input type="text" value=@Model.E_Mail>
+                    <label for="">Contacto</label>
+                    <input type="text" value=@Model.Name>
+                </div>
+            </header>
+            <section>
+                <div class="saldo">
+                    <label for="">Condición de pago</label>
+                    <input type="text" value=@Model.GroupNum>
+                    <label for="">Moneda</label>
+                    <input type="text" value=@Model.Currency>
+                    <label for="">Saldo cuenta</label>
+                    <input type="text" value=@Model.Balance>
+                </div>
+                <div class="vendedores">
+                    <label for="">Xela</label>
+                    <input type="text" value=@Model.U_Vendedor_5>
+                    <label for="">Utensilios</label>
+                    <input type="text" value=@Model.U_Vendedor_2>
+                    <label for="">Repuestos</label>
+                    <input type="text" value=@Model.U_Vendedor_3>
+                    <label for="">Regional</label>
+                    <input type="text" value=@Model.U_Vendedor_4>
+                    <label for="">Sala</label>
+                    <input type="text" value="@Model.SlpCode">
+                </div>
+            </section>
+            <div class="button-container">
+                <button>Buscar</button>
+                <button>Cancelar</button>
+            </div>
+
+        </form>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+﻿@model MDocument
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/doc.css" rel="stylesheet" />
+    <title>Cotización</title>
+
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="container">
+        <h1>@Model.titulo</h1>
+        <form class=factura-form action=@Url.Action(Model.metodo,Model.controlador) method="post">
+
+            <!-- Encabezado -->
+            <div class="encabezado">
+
+                <div class="campos1">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" value="@Model.CardCode">
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" value="@Model.CardName">
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" value="@Model.Address">
+                </div>
+
+                <div class="campos2">
+                    <label for="serie">Serie:</label>
+                    <input type="text" id="serie" name="serie" value="@Model.Series">
+
+                    <label for="no-factura">No. Factura:</label>
+                    <input type="text" id="noDoc" name="noDoc" value="@Model.DocNum">
+
+                    <label for="nit">NIT:</label>
+                    <input type="text" id="nit" name="nit" value="@Model.U_FacNit">
+
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" value="@Model.DocDate.ToString("yyyy-MM-dd")"> @*@Model.Fecha.ToString("yyyy-MM-dd")*@
+                </div>
+
+
+
+            </div>
+
+
+            <!-- Detalle de Productos -->
+            <div class="detalle">
+                <table id="detalle">
+                    <thead>
+                        <tr>
+                            <th>Cod Producto</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>% Descuento</th>
+                            <th>Precio Unitario</th>
+                            <th>Total de Línea</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filas de detalle de productos se agregan dinámicamente con JavaScript -->
+                    </tbody>
+                </table>
+                <button type="button" id="agregarLinea">+</button>
+
+            </div>
+
+
+            <!-- Totales y Comentarios -->
+            <div class="pieDocumento">
+                <div class="pie1">
+                    <label for="vendedor">Nombre del Vendedor:</label>
+                    <input type="text" id="vendedor" name="vendedor" value="@Model.SlpCode">
+
+                    <label for="propietario-documento">Nombre del Propietario del Documento:</label>
+                    <input type="text" id="propietario-documento" name="propietario-documento" value="@Model.OwnerCode">
+
+                    <label for="comentarios">Comentarios:</label>
+                    <textarea id="comentarios" name="comentarios">@Model.comments </textarea>
+                </div>
+                <div class="pie2">
+                    <label for="total-iva">Total del IVA (12%):</label>
+                    <input type="number" id="total-iva" name="total-iva" readonly value="@Model.VatSum">
+
+                    <label for="total-documento">Total del Documento:</label>
+                    <input type="number" id="total-documento" name="total-documento" readonly value="@Model.DocTotal">
+                </div>
+            </div>
+            <div class="btnsdoc">
+                <a href=@Url.Action("Buscar",Model.controlador)><img src="~/images/buscar.jpg" /></a>
+            </div>
+            <div class="button-container">
+
+                <button type="submit" id="enviar">@Model.accion</button>
+                <button type="button" id="cancelar"><a href=@Url.Action("Menu","CMenu")>Cancelar</a></button>
+            </div>
+
+        </form>
+
+    </div>
+    <script src="~/js/doc.js"></script>
+
+</body>
+
+</html>

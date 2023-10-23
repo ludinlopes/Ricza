@@ -1,0 +1,61 @@
+﻿@model MArticulo
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articulo</title>
+    <link href="~/css/articulo.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="Content">
+        <form>
+            <div>
+                <h1>Datos Maestros de Artículo</h1>
+                <div class="Encabezado">
+                    <label>Código</label>
+                    <input class="Codigo" type="text" name="Codigo" value="@Model.ItemCode">
+                    <label>Marca</label>
+                    <input class="Marca" name="Marca" type="text" value="@Model.Marca">
+                    <label>Modelo</label>
+                    <input class="Modelo" type="text" value="@Model.Modelo">
+                    <label>Descripción</label>
+                    <input type="text" value="@Model.ItemName">
+                    <label>Precio</label>
+                    <input class="Precio" type="text" value="@Model.PicturName">
+                    <label>Tipo</label>
+                    <input class="Tipo" type="text" value="@Model.U_TipoA2">
+                </div>
+                <div class="Inventario">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cod.</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="DesLarga">
+                    <label>Descripción larga</label>
+                    <textarea>@Model.UserText</textarea>
+                </div>
+                <div class="Imagen">
+                    <img src="file://///192.168.5.2/Attachments/Imagenes/UT00015.jpg" alt="imagen">
+                </div>
+                <div class="button-container">
+
+                    <button type="submit" id="enviar">Buscar</button>
+                    <button type="button" id="Salir"><a href=@Url.Action("Menu","CMenu")>Salir</a></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

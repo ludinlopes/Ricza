@@ -1,10 +1,11 @@
 ﻿
 .Window {
-    margin-top:25px;
-    display:block;
-    position:absolute;
+   
+    margin-top: 25px;
+    display: block;
+    position: absolute;
     margin-left: 220px;
-    background-color: blue;
+    background-color: white;
     width: 800px;
     height: 630px
 }
@@ -14,25 +15,64 @@
     top: 0;
     position: relative;
     display: block;
-    background-color: aqua;
-    width: 96%;
-    margin: 2%;
+    background-color: white;
+    width: 98%;
+    margin: 1%;
 }
 
 .window-content {
     position: relative;
     display: block;
     height: 500px;
-    width: 96%;
-    margin:2%;
-    background-color: yellowgreen;
+    width: 98%;
+    margin:1%;
+    background-color: white;
 }
 
 .piedoc {
+    align-content:center;
     position: absolute;
     height: 5%;
     display: block;
-    background-color: red;
+    background-color: white;
     width: 100%;
-    bottom:0;
+    bottom: 0;
+}
+
+.campos1 {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+}
+.campos2 {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    right: 0;
+}
+
+.campos1 input {
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 2%;
+    margin: 2%;
+    position: relative;
+    width: 90%;
+    height:8PX;
+    font-size:11px;
+}
+.campos2 input {
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 2%;
+    margin: 2%;
+    position: relative;
+    width: 90%;
+    height: 8PX;
+    font-size: 11px;
+}
+label {
+    font-size: 11px;
 }
