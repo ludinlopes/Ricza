@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
 using Ricza.Implement;
 using Ricza.Models;
+using SAPbobsCOM;
 
 namespace Ricza.Controllers
 {
@@ -14,6 +15,9 @@ namespace Ricza.Controllers
         {
             
             MDocument cot = documento("icrear","Crear");
+            
+            
+            
             cot.DocDate = DateTime.Now;
             return View(cot);
         }

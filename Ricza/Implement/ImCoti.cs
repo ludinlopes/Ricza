@@ -1,7 +1,6 @@
 ﻿using ApiSap.Conexion;
 using Ricza.Models;
 using SAPbobsCOM;
-using System.Reflection;
 
 namespace Ricza.Implement
 {
@@ -17,10 +16,16 @@ namespace Ricza.Implement
             myCompany.Connect();
 
             var Doc = (Documents)myCompany.GetBusinessObject(BoObjectTypes.oQuotations);
+            var inv = (Items)myCompany.GetBusinessObject(BoObjectTypes.oItems);
+            var InvMod = (Manufacturers)myCompany.GetBusinessObject(BoObjectTypes.oManufacturers);
+            var vend = (SalesPersons)myCompany.GetBusinessObject(BoObjectTypes.oSalesPersons);
+            var emp = (EmployeesInfo)myCompany.GetBusinessObject(BoObjectTypes.oEmployeesInfo);
             var mDoc = new MDocument();
+            //var detalle = new MDetalleDoc();
 
             if (Doc.GetByKey(DocEntry))
             {
+
                 mDoc.DocEntry = Doc.DocEntry;
                 mDoc.ObjType = (int)Doc.DocObjectCode;
                 mDoc.CANCELED = Doc.Cancelled.ToString();
@@ -31,13 +36,14 @@ namespace Ricza.Implement
                 mDoc.CardName = Doc.CardName;
                 mDoc.Address = Doc.Address;
                 mDoc.U_FacNit = Doc.UserFields.Fields.Item("U_FacNit").Value;
-                
-
                 mDoc.DocDate = Doc.DocDate;
                 mDoc.Series = Doc.Series;
                 mDoc.DocNum = Doc.DocNum;
-                mDoc.SlpCode = Doc.SalesPersonCode;
-                mDoc.OwnerCode = Doc.DocumentsOwner;
+                vend.GetByKey(Doc.SalesPersonCode);
+                mDoc.SlpCode = vend.SalesEmployeeName;
+                emp.GetByKey(Doc.DocumentsOwner);
+                mDoc.OwnerCode = emp.LastName + ", " + emp.FirstName;
+
                 mDoc.U_FacSerie = Doc.UserFields.Fields.Item("U_FacSerie").Value;
                 mDoc.U_FacNum = Doc.UserFields.Fields.Item("U_FacNum").Value;
                 mDoc.U_FacNom = Doc.UserFields.Fields.Item("U_FacNom").Value;
@@ -51,11 +57,41 @@ namespace Ricza.Implement
                 mDoc.DocCur = Doc.DocCurrency;
                 mDoc.VatSum = Doc.VatSum;
                 mDoc.DocTotal = Doc.DocTotal;
-                mDoc.comments = Doc.Comments;
+                mDoc.comments = Doc.Lines.Count.ToString();// Doc.Comments;
                 mDoc.metodo = Metodo;
                 mDoc.controlador = "Cotizacion";
                 mDoc.accion = Acction;
                 mDoc.titulo = "Cotización";
+
+
+                mDoc.Detalle = new List<MDetalleDoc>();
+                for (int i = 0; i < Doc.Lines.Count; i++)
+                {
+                    Doc.Lines.SetCurrentLine(i);
+                    MDetalleDoc detalle = new MDetalleDoc();
+
+                    detalle.ItemCode = Doc.Lines.ItemCode;
+                    detalle.Modelo = Doc.Lines.VendorNum;
+
+                    inv.GetByKey(Doc.Lines.ItemCode);
+                    InvMod.GetByKey(inv.Manufacturer);
+                    detalle.Marca = InvMod.ManufacturerName;
+
+                    detalle.Dscription = Doc.Lines.ItemDescription;
+                    detalle.Quantity = Doc.Lines.Quantity.ToString();
+                    detalle.WhsCode = Doc.Lines.WarehouseCode;
+                    detalle.DiscPrcnt = Doc.Lines.DiscountPercent;
+
+                    detalle.PrecioUnidad = Doc.Lines.PriceAfterVAT;
+                    detalle.LineTotal = Doc.Lines.LineTotal + Doc.Lines.TaxTotal;
+                    mDoc.Detalle.Add(detalle);
+
+                }
+
+
+
+
+
                 myCompany.Disconnect();
                 return mDoc;
             }
@@ -67,7 +103,7 @@ namespace Ricza.Implement
                 return mDoc;
             }
 
-            
+
         }
     }
 }

@@ -64,8 +64,11 @@
                     <thead>
                         <tr>
                             <th>Cod Producto</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
                             <th>Nombre</th>
                             <th>Cantidad</th>
+                            <th>Almacen</th>
                             <th>% Descuento</th>
                             <th>Precio Unitario</th>
                             <th>Total de Línea</th>
@@ -73,6 +76,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (Model.Detalle == null)
+                        {
+                            
+                        } else
+                        {
+                            @foreach (var articulo in Model.Detalle)
+                            {
+                                <tr>
+                                    <td><input type="text" name="producto${filaIndex}" required style="width:60px;" value="@articulo.ItemCode"></td>
+                                    <td><input type="text" name="Modelo${filaIndex}" required style="width:60px;" value="@articulo.Modelo"></td>
+                                    <td><input type="text" name="Marca${filaIndex}" required style="width:80px;" value="@articulo.Marca"></td>
+                                    <td><input type="text" name="nombre${filaIndex}" required style="width:300px;" value="@articulo.Dscription"></td>
+                                    <td><input type="number" name="cantidad${filaIndex}" required style="width:40px; text-align: center;" value="@articulo.Quantity"></td>
+                                    <td><input type="text" name="Almacen${filaIndex}" required style="width:60px;" value="@articulo.WhsCode"></td>
+                                    <td><input type="decimal" name="descuento${filaIndex}" required style="width:50px; text-align: center;" value="@articulo.DiscPrcnt"></td>
+                                    <td><input type="decimal" name="precioUnitario${filaIndex}" step="0.01" required style="width:60px; text-align: center;" value="@articulo.PrecioUnidad"></td>
+                                    <td><input type="decimal" name="totalLinea${filaIndex}" readonly style="width:100px; text-align: center;" value="@articulo.LineTotal"></td>
+                                    <td><button type="button" class="eliminar">Eliminar</button></td>
+                                </tr>
+                            }
+                        }
+
                         <!-- Filas de detalle de productos se agregan dinámicamente con JavaScript -->
                     </tbody>
                 </table>

@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualBasic;
+using System.Collections.Generic;
 
 namespace Ricza.Models
 {
     public class MDocument
     {
+        
         public int? DocEntry { get; set; }
         public int ObjType { get; set; }
         public string CANCELED { get; set; }
@@ -17,8 +19,8 @@ namespace Ricza.Models
         public DateTime DocDate { get; set; }
         public int? Series { get; set; }
         public int? DocNum { get; set; }
-        public int? SlpCode { get; set; }
-        public int? OwnerCode { get; set; } //Propietario
+        public string SlpCode { get; set; }
+        public string OwnerCode { get; set; } //Propietario
 
         public string U_FacSerie { get; set; }
         public string U_FacNum { get; set; }
@@ -42,5 +44,23 @@ namespace Ricza.Models
         public string controlador { get; set; }
         public string? accion { get; set; }
         public string? titulo { get; set; }
+
+        public List<MDetalleDoc> Detalle { get; set; }
+    }
+    public class MDetalleDoc
+    {
+        public string ItemCode { get; set; }
+        public string? Dscription { get; set; }
+        public string? Quantity { get; set; }
+        public double? DiscPrcnt { get; set; }
+        public double? PrecioUnidad { get; set; }
+        public double? LineTotal { get; set; }
+        public string? WhsCode { get; set; }
+        public string? Marca { get; set; }
+        public string? Modelo { get; set; }
+
     }
 }
+
+
+
