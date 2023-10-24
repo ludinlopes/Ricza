@@ -38,8 +38,11 @@
         const nuevaFila = document.createElement("tr");
         nuevaFila.innerHTML = `
             <td><input type="text" name="producto${filaIndex}" required style="width:60px;"></td>
+            <td><input type="text" name="Modelo${filaIndex}" required style="width:60px;"></td>
+            <td><input type="text" name="Marca${filaIndex}" required style="width:80px;"></td>
             <td><input type="text" name="nombre${filaIndex}" required style="width:300px;"></td>
             <td><input type="number" name="cantidad${filaIndex}" required style="width:40px; text-align: center;"></td>
+            <td><input type="text" name="Almacen${filaIndex}" required style="width:60px;"></td>
             <td><input type="decimal" name="descuento${filaIndex}" required style="width:50px; text-align: center;" value=0></td>
             <td><input type="decimal" name="precioUnitario${filaIndex}" step="0.01" required style="width:60px; text-align: center;"></td>
             <td><input type="decimal" name="totalLinea${filaIndex}" readonly style="width:100px; text-align: center;"></td>

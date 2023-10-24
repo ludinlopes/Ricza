@@ -90,9 +90,9 @@
                                     <td><input type="text" name="nombre${filaIndex}" required style="width:300px;" value="@articulo.Dscription"></td>
                                     <td><input type="number" name="cantidad${filaIndex}" required style="width:40px; text-align: center;" value="@articulo.Quantity"></td>
                                     <td><input type="text" name="Almacen${filaIndex}" required style="width:60px;" value="@articulo.WhsCode"></td>
-                                    <td><input type="decimal" name="descuento${filaIndex}" required style="width:50px; text-align: center;" value="@articulo.DiscPrcnt"></td>
-                                    <td><input type="decimal" name="precioUnitario${filaIndex}" step="0.01" required style="width:60px; text-align: center;" value="@articulo.PrecioUnidad"></td>
-                                    <td><input type="decimal" name="totalLinea${filaIndex}" readonly style="width:100px; text-align: center;" value="@articulo.LineTotal"></td>
+                                    <td><input type="number"  name="descuento${filaIndex}" required style="width:50px; text-align: center;" value="@articulo.DiscPrcnt"></td>
+                                    <td><input type="number"  name="precioUnitario${filaIndex}" step="0.01" required style="width:60px; text-align: center;" value="@articulo.PrecioUnidad"></td>
+                                    <td><input type="number"  name="totalLinea${filaIndex}" readonly style="width:100px; text-align: center;" value="@articulo.LineTotal"></td>
                                     <td><button type="button" class="eliminar">Eliminar</button></td>
                                 </tr>
                             }

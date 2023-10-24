@@ -1,29 +1,26 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Options;
+﻿using Microsoft.AspNetCore.Mvc;
 using Ricza.Implement;
 using Ricza.Models;
-using SAPbobsCOM;
 
 namespace Ricza.Controllers
 {
     public class Cotizacion : Controller
     {
         private ImCoti m = new ImCoti();
-        
+
         public IActionResult crear()
         {
-            
-            MDocument cot = documento("icrear","Crear");
-            
-            
-            
+
+            MDocument cot = documento("icrear", "Crear");
+
+
+
             cot.DocDate = DateTime.Now;
             return View(cot);
         }
         public IActionResult buscar()
         {
-            MDocument cot = documento("ibuscar","Buscar");
+            MDocument cot = documento("ibuscar", "Buscar");
 
             return View(cot);
         }
@@ -35,21 +32,21 @@ namespace Ricza.Controllers
 
         public ActionResult ibuscar(int noDoc)
         {
-            MDocument cot = m.GetDocument(noDoc,"icrear", "crear"); ;
+            MDocument cot = m.GetDocument(noDoc, "icrear", "crear");
 
 
-                return View("actualizar",cot);
+            return View("actualizar", cot);
 
 
 
         }
 
-        public ActionResult icrear() 
-        { 
+        public ActionResult icrear()
+        {
             return RedirectToAction("crear", "Cotizacion");
         }
 
-        public ActionResult iactualizar() 
+        public ActionResult iactualizar()
         {
             return RedirectToAction("crear", "Cotizacion");
         }

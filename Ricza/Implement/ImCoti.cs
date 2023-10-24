@@ -15,13 +15,12 @@ namespace Ricza.Implement
             myCompany = cn.connector();
             myCompany.Connect();
 
-            var Doc = (Documents)myCompany.GetBusinessObject(BoObjectTypes.oQuotations);
+            var Doc = myCompany.GetBusinessObject(BoObjectTypes.oQuotations);
             var inv = (Items)myCompany.GetBusinessObject(BoObjectTypes.oItems);
             var InvMod = (Manufacturers)myCompany.GetBusinessObject(BoObjectTypes.oManufacturers);
             var vend = (SalesPersons)myCompany.GetBusinessObject(BoObjectTypes.oSalesPersons);
             var emp = (EmployeesInfo)myCompany.GetBusinessObject(BoObjectTypes.oEmployeesInfo);
             var mDoc = new MDocument();
-            //var detalle = new MDetalleDoc();
 
             if (Doc.GetByKey(DocEntry))
             {
@@ -29,7 +28,6 @@ namespace Ricza.Implement
                 mDoc.DocEntry = Doc.DocEntry;
                 mDoc.ObjType = (int)Doc.DocObjectCode;
                 mDoc.CANCELED = Doc.Cancelled.ToString();
-                //mDoc.BPLId = Doc.BPLName;
                 mDoc.BPLName = Doc.BPLName;
                 mDoc.DocType = Doc.DocType.ToString();
                 mDoc.CardCode = Doc.CardCode;
@@ -57,7 +55,7 @@ namespace Ricza.Implement
                 mDoc.DocCur = Doc.DocCurrency;
                 mDoc.VatSum = Doc.VatSum;
                 mDoc.DocTotal = Doc.DocTotal;
-                mDoc.comments = Doc.Lines.Count.ToString();// Doc.Comments;
+                mDoc.comments = Doc.Lines.Count.ToString();
                 mDoc.metodo = Metodo;
                 mDoc.controlador = "Cotizacion";
                 mDoc.accion = Acction;
@@ -88,10 +86,6 @@ namespace Ricza.Implement
 
                 }
 
-
-
-
-
                 myCompany.Disconnect();
                 return mDoc;
             }
@@ -105,5 +99,16 @@ namespace Ricza.Implement
 
 
         }
+
+        public void SetDocument()
+        {
+
+        }
+
+        public void AddDocument()
+        {
+
+        }
     }
+
 }
